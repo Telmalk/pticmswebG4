@@ -1,5 +1,5 @@
 <?php
-    function getHeader() {
+    function getHeader(array $data) {
         ?>
         <!DOCTYPE html>
         <html lang="fr">
@@ -14,18 +14,11 @@
                 <a class="navbar-brand" href="#">PETIT CMS<a>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mr-auto">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="#">Game of Thrones</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Link</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">con de mimes</a>
-                                </li>
+                                <?php
+                                    foreach ($data as $key => $value) {
+
+                                    }
+                                ?>
                             </ul>
                         </div>
             </nav>
@@ -33,15 +26,23 @@
         <?php
     }
 
-    function getPage() {
+    function getNav($title, $slug) {
+        ?>
+        <li class="nav-item">
+            <a class="nav-link" href="<?=$slug?>" tabindex="-1" aria-disabled="true"><?=$title?></a>
+        </li>
+        <?php
+    }
+
+    function getPage(array $dataPage) {
         ?>
         <div class="container theme-showcase" role="main">
             <div class="jumbotron">
-                <h1>Game Of Thrones</h1>
-                <p>Neuf familles nobles rivalisent pour le contrôle du Trône de Fer dans les sept royaumes de Westeros. Pendant ce temps, des anciennes créatures mythiques oubliées reviennent pour faire des ravages.</p>
-                <span class="label btn btn-danger">Palpitant</span>
+                <h1><?=$dataPage['title']?></h1>
+            <p><?=$dataPage['description']?></p>
+                <span class="label btn btn-<?=$dataPage['span-label']?>"><?=$dataPage['span-text']?></span>
             </div>
-            <img class="img-thumbnail" alt="la" src="../public/img/got.jpg" data-holder-rendered="true">
+            <img class="img-thumbnail" alt="<?=$dataPage['img-alt']?>" src="../public/img/<?=$dataPage['img']?>" data-holder-rendered="true">
         </div>
         </div>
         <?php
