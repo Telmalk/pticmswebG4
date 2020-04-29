@@ -1,5 +1,5 @@
 <?php
-    function getHeader(array $data) {
+    function getHeader(array $data, string $currentPage) {
         ?>
         <!DOCTYPE html>
         <html lang="fr">
@@ -16,7 +16,7 @@
                             <ul class="navbar-nav mr-auto">
                                 <?php
                                     foreach ($data as $key => $value) {
-                                        getNav($value['title'], $key);
+                                        getNav($value['title'], $key, $currentPage);
                                     }
                                 ?>
                             </ul>
@@ -26,9 +26,13 @@
         <?php
     }
 
-    function getNav($title, $slug) {
+    function getNav(string $title, string $slug, string $currentPage) {
+            $classNav = "";
+            if ($slug === $currentPage) {
+                $classNav = "active";
+            }
         ?>
-        <li class="nav-item active">
+        <li class="nav-item <?=$classNav?>">
             <a class="nav-link" href="<?=APP_URL?>?<?=APP_PARAM_PAGE?>=<?=$slug?>" tabindex="-1" aria-disabled="true"><?=$title?></a>
         </li>
         <?php

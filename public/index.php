@@ -16,6 +16,6 @@ if (is_null($dataPage)) {
     $currentPage = APP_DEFAULT_PAGE;
     $dataPage = getData($data, $currentPage);
 }
-getHeader($data);
+getHeader($data, $currentPage);
 getPage($dataPage);
 getFooter();
