@@ -28,7 +28,7 @@
 
     function getNav($title, $slug) {
         ?>
-        <li class="nav-item">
+        <li class="nav-item active">
             <a class="nav-link" href="<?=APP_URL?>?<?=APP_PARAM_PAGE?>=<?=$slug?>" tabindex="-1" aria-disabled="true"><?=$title?></a>
         </li>
         <?php
@@ -46,6 +46,10 @@
         </div>
         </div>
         <?php
+    }
+
+    function getData(array $data, string $currentPage): ?array {
+        return $data[$currentPage] ?? null;
     }
 
     function getFooter() {
