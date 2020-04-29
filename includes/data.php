@@ -11,5 +11,8 @@
         ],
         "link" => [
             "title" => "AYyaaaaa"
+        ],
+        "doom" => [
+            "title" => "MOther fucking DOOOM",
         ]
     ];

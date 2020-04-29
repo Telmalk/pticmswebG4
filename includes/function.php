@@ -6,7 +6,7 @@
         <head>
             <meta charset="UTF-8">
             <title>Ptis Cms</title>
-            <link href="../public/boostrap/css/bootstrap.css" rel="stylesheet">
+            <link href="./boostrap/css/bootstrap.css" rel="stylesheet">
         </head>
         <body role="document">
         <div class="container">
@@ -16,7 +16,7 @@
                             <ul class="navbar-nav mr-auto">
                                 <?php
                                     foreach ($data as $key => $value) {
-
+                                        getNav($value['title'], $key);
                                     }
                                 ?>
                             </ul>
@@ -29,7 +29,7 @@
     function getNav($title, $slug) {
         ?>
         <li class="nav-item">
-            <a class="nav-link" href="<?=$slug?>" tabindex="-1" aria-disabled="true"><?=$title?></a>
+            <a class="nav-link" href="index.php?p=<?=$slug?>" tabindex="-1" aria-disabled="true"><?=$title?></a>
         </li>
         <?php
     }
@@ -42,7 +42,7 @@
             <p><?=$dataPage['description']?></p>
                 <span class="label btn btn-<?=$dataPage['span-label']?>"><?=$dataPage['span-text']?></span>
             </div>
-            <img class="img-thumbnail" alt="<?=$dataPage['img-alt']?>" src="../public/img/<?=$dataPage['img']?>" data-holder-rendered="true">
+            <img class="img-thumbnail" alt="<?=$dataPage['img-alt']?>" src="./img/<?=$dataPage['img']?>" data-holder-rendered="true">
         </div>
         </div>
         <?php
