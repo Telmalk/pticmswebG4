@@ -1,12 +1,19 @@
 <?php
 define("APP_ROOT_DIR", dirname(__DIR__) . "/");
+define("APP_PARAM_PAGE", "page");
 define("APP_URL", "index.php");
-
+define("APP_DEFAULT_PAGE", "got");
 
 require_once APP_ROOT_DIR . "includes/function.php";
 require_once APP_ROOT_DIR . "includes/data.php";
 
-$dataPage = $data['got'];
+$currentPage = $_GET[APP_PARAM_PAGE] ?? APP_DEFAULT_PAGE;
+
+var_dump($currentPage);
+
+$dataPage = $data[$currentPage];
+
+http_response_code(404);
 
 getHeader($data);
 getPage($dataPage);

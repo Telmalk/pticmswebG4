@@ -10,9 +10,20 @@
             "img-alt" => "Représentation du trône de fer",
         ],
         "link" => [
-            "title" => "AYyaaaaa"
+            "title" => "AYyaaaaa",
+            "description" => "AYAYAYAYAYAYA YAYAYAYAAY",
+            "span-text" => "Aventure",
+            "span-label" => "success",
+            "img" => "link.jpg",
+            "img-alt" => "Link",
         ],
         "doom" => [
             "title" => "MOther fucking DOOOM",
+            "description" => "DOOOOOOOOOOOOOOM",
+            "span-text" => "DOOOM",
+            "span-label" => "danger",
+            "img" => "doom.jpg",
+            "img-alt" => "doom",
+
         ]
     ];

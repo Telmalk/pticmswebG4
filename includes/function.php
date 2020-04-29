@@ -6,7 +6,7 @@
         <head>
             <meta charset="UTF-8">
             <title>Ptis Cms</title>
-            <link href="./boostrap/css/bootstrap.css" rel="stylesheet">
+            <link href="../public/boostrap/css/bootstrap.css" rel="stylesheet">
         </head>
         <body role="document">
         <div class="container">
@@ -29,7 +29,7 @@
     function getNav($title, $slug) {
         ?>
         <li class="nav-item">
-            <a class="nav-link" href="index.php?p=<?=$slug?>" tabindex="-1" aria-disabled="true"><?=$title?></a>
+            <a class="nav-link" href="<?=APP_URL?>?<?=APP_PARAM_PAGE?>=<?=$slug?>" tabindex="-1" aria-disabled="true"><?=$title?></a>
         </li>
         <?php
     }
