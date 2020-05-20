@@ -7,7 +7,7 @@ define("APP_DEFAULT_PAGE", "got");
 require_once APP_ROOT_DIR . "includes/function.php";
 require_once APP_ROOT_DIR . "includes/data.php";
 
-$currentPage = $_GET[APP_PARAM_PAGE];
+$currentPage = $_GET[APP_PARAM_PAGE] ?? APP_DEFAULT_PAGE;
 
 $dataPage = getData($data, $currentPage);
 
