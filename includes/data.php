@@ -16,6 +16,7 @@
             "span-label" => "success",
             "img" => "link.jpg",
             "img-alt" => "Link",
+            "slug" => "link"
         ],
         "doom" => [
             "title" => "MOther fucking DOOOM",

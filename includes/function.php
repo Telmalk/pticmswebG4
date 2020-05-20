@@ -1,5 +1,6 @@
 <?php
-    function getHeader(array $data, string $currentPage) {
+    function getHeader(PDO $pdo, string $currentPage) {
+         $data = getHeaderData($pdo);
         ?>
         <!DOCTYPE html>
         <html lang="fr">
@@ -15,8 +16,8 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mr-auto">
                                 <?php
-                                    foreach ($data as $key => $value) {
-                                        getNav($value['title'], $key, $currentPage);
+                                    foreach ($data as $value) {
+                                        getNav($value['title'], $value['slug'] ,$currentPage);
                                     }
                                 ?>
                             </ul>
@@ -24,6 +25,25 @@
             </nav>
 
         <?php
+    }
+
+    function getHeaderData(PDO $pdo) {
+        $sql = "
+            SELECT
+                title,
+                slug
+            FROM
+                page;
+        ";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        errorHandler($stmt);
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if (!$data) {
+            return null;
+        }
+        return $data;
     }
 
     function getNav(string $title, string $slug, string $currentPage) {
@@ -52,8 +72,30 @@
         <?php
     }
 
-    function getData(array $data, string $currentPage): ?array {
-        return $data[$currentPage] ?? null;
+    function getData(PDO $pdo, string $currentPage): ?array {
+        $sql = "
+            SELECT
+                title,
+                description,
+                img,
+                `span-label`,
+                `span-text`,
+                `img-alt`
+            FROM
+                page
+            WHERE
+                slug = :slug;
+        ";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(":slug", $currentPage);
+        $stmt->execute();
+        errorHandler($stmt);
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        if (!$data) {
+            return null;
+        }
+        return $data;
     }
 
     function getFooter() {
@@ -61,4 +103,10 @@
         </body>
         </html>
         <?php
+    }
+
+    function errorHandler(PDOStatement $stmt) {
+        if ($stmt->errorCode() !== '00000') {
+            throw new PDOException($stmt->errorInfo()[2]);
+        }
     }
