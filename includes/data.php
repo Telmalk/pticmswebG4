@@ -24,6 +24,5 @@
             "span-label" => "danger",
             "img" => "doom.jpg",
             "img-alt" => "doom",
-
         ]
     ];
